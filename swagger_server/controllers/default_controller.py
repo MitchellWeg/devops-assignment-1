@@ -29,7 +29,7 @@ def delete_student(student_id):  # noqa: E501
 
     :rtype: object
     """
-    return delete(student_db)
+    return delete(student_id)
 
 
 def get_student_by_id(student_id):  # noqa: E501

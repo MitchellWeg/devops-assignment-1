@@ -20,6 +20,7 @@ def add(student=None):
         return 'already exists', 409
 
     doc_id = student_db.insert(student.to_dict())
+    print(student.to_dict())
     student.student_id = doc_id
     return student.student_id
 
@@ -29,8 +30,6 @@ def get_by_id(student_id=None, subject=None):
     if not student:
         return 'not found', 404
     student['student_id'] = student_id
-    if student['grades'] == None:
-        student['grades'] = []
 
     print(student)
     return student
