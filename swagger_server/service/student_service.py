@@ -29,6 +29,9 @@ def get_by_id(student_id=None, subject=None):
     if not student:
         return 'not found', 404
     student['student_id'] = student_id
+    if student['grades'] == None:
+        student['grades'] = []
+
     print(student)
     return student
 
