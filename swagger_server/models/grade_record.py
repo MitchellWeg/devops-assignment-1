@@ -24,7 +24,7 @@ class GradeRecord(Model):
         """
         self.swagger_types = {
             'subject_name': str,
-            'grade': int
+            'grade': float
         }
 
         self.attribute_map = {
