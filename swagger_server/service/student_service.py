@@ -7,7 +7,7 @@ from tinydb import TinyDB, Query
 import pymongo
 from bson.objectid import ObjectId
 
-mongo_client = pymongo.MongoClient(host='localhost', port=27017)
+mongo_client = pymongo.MongoClient(host='mongo', port=27017)
 db = mongo_client['student']
 student_collection = db['student_collection']
 
@@ -18,8 +18,8 @@ student_collection = db['student_collection']
 
 def add(student=None):
     data = {
-        'first_name': student.first_name,
-        'last_name': student.first_name
+        'first_name': str(student.first_name),
+        'last_name': str(student.last_name)
     }
 
     res = student_collection.find_one(data)
@@ -29,7 +29,7 @@ def add(student=None):
 
     doc_id = student_collection.insert_one(data)
 
-    student.student_id = doc_id
+    student.student_id = str(doc_id)
     return student.student_id
 
 # def add(student=None):
