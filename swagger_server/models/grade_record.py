@@ -14,24 +14,24 @@ class GradeRecord(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, subject: str=None, grade: int=None):  # noqa: E501
+    def __init__(self, subject_name: str=None, grade: int=None):  # noqa: E501
         """GradeRecord - a model defined in Swagger
 
-        :param subject: The subject of this GradeRecord.  # noqa: E501
-        :type subject: str
+        :param subject_name: The subject_name of this GradeRecord.  # noqa: E501
+        :type subject_name: str
         :param grade: The grade of this GradeRecord.  # noqa: E501
         :type grade: int
         """
         self.swagger_types = {
-            'subject': str,
+            'subject_name': str,
             'grade': float
         }
 
         self.attribute_map = {
-            'subjec': 'subject',
+            'subject_name': 'subject_name',
             'grade': 'grade'
         }
-        self._subject = subject
+        self._subject_name = subject_name
         self._grade = grade
 
     @classmethod
@@ -46,27 +46,27 @@ class GradeRecord(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def subject(self) -> str:
-        """Gets the subject of this GradeRecord.
+    def subject_name(self) -> str:
+        """Gets the subject_name of this GradeRecord.
 
 
-        :return: The subject of this GradeRecord.
+        :return: The subject_name of this GradeRecord.
         :rtype: str
         """
-        return self._subject
+        return self._subject_name
 
-    @subject.setter
-    def subject(self, subject: str):
-        """Sets the subject of this GradeRecord.
+    @subject_name.setter
+    def subject_name(self, subject_name: str):
+        """Sets the subject_name of this GradeRecord.
 
 
-        :param subject: The subject of this GradeRecord.
-        :type subject: str
+        :param subject_name: The subject_name of this GradeRecord.
+        :type subject_name: str
         """
-        if subject is None:
-            raise ValueError("Invalid value for `subject`, must not be `None`")  # noqa: E501
+        if subject_name is None:
+            raise ValueError("Invalid value for `subject_name`, must not be `None`")  # noqa: E501
 
-        self._subject = subject
+        self._subject_name = subject_name
 
     @property
     def grade(self) -> int:
