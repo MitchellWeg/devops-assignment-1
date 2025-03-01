@@ -22,7 +22,7 @@ def add(student=None):
     data = {
         'first_name': str(student.first_name),
         'last_name': str(student.last_name),
-        'grade_records': str(student.grade_records)
+        'grade_records': list(student.grade_records)
     }
 
     res = student_collection.find_one(data)
@@ -62,6 +62,7 @@ def get_by_id(student_id=None, subject=None):
 
         student['student_id'] = str(student['_id'])
         del student['_id']
+        grade_records = student['grade_records']
 
         return jsonify(student)
 
