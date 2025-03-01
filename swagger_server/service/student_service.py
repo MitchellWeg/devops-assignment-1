@@ -29,7 +29,7 @@ def add(student=None):
 
     doc_id = student_collection.insert_one(data)
 
-    student.student_id = str(doc_id)
+    student.student_id = str(doc_id.inserted_id)
     return student.student_id
 
 # def add(student=None):
