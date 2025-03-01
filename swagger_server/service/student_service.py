@@ -4,8 +4,10 @@ from functools import reduce
 
 import pymongo.mongo_client
 from tinydb import TinyDB, Query
+from flask import jsonify
 import pymongo
 from bson.objectid import ObjectId
+import json
 
 mongo_client = pymongo.MongoClient(host='mongo', port=27017)
 db = mongo_client['student']
@@ -50,14 +52,18 @@ def add(student=None):
 
 def get_by_id(student_id=None, subject=None):
     try:
+        if not ObjectId.is_valid(student_id):
+            return jsonify({'error': 'Invalid ObjectId'}), 400
+
         student = student_collection.find_one({'_id': ObjectId(student_id)})
         if not student:
-            return 'not found', 404
-        
-        student['student_id'] = str(student['_id'])
-        return student
+            return jsonify({'message': 'not found'}), 404
+
+        return json.dumps(student)
+
     except Exception as e:
-        print(str(e))
+        print('Error:', str(e))
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 # def get_by_id(student_id=None, subject=None):
 #     student = student_db.get(doc_id=int(student_id))
@@ -74,7 +80,7 @@ def delete(student_id=None):
         if res.deleted_count == 0:
             return 'not found', 404
         
-        return student_id
+        return json.dumps(student_id)
     except Exception as e:
         print(str(e))
 # def delete(student_id=None):
