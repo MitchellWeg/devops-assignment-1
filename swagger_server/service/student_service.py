@@ -59,6 +59,9 @@ def get_by_id(student_id=None, subject=None):
         if not student:
             return jsonify({'message': 'not found'}), 404
 
+        student['student_id'] = str(student['_id'])
+        del student['_id']
+
         return json.dumps(student)
 
     except Exception as e:
