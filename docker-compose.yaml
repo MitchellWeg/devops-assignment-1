@@ -1,7 +1,7 @@
 version: '3'
 services:
   student_service:
-    image: simple-inventory-app/student_service
+    build: .
     restart: unless-stopped
     depends_on:
       - mongo
