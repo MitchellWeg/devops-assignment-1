@@ -21,7 +21,8 @@ student_collection = db['student_collection']
 def add(student=None):
     data = {
         'first_name': str(student.first_name),
-        'last_name': str(student.last_name)
+        'last_name': str(student.last_name),
+        'grade_records': str(student.grade_records)
     }
 
     res = student_collection.find_one(data)
