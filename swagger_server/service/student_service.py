@@ -22,7 +22,6 @@ def add(student=None):
     data = {
         'first_name': str(student.first_name),
         'last_name': str(student.last_name),
-        'grade_records': list(student.grade_records)
     }
 
     res = student_collection.find_one(data)
@@ -30,7 +29,7 @@ def add(student=None):
     if res:
         return 'already exists', 409
 
-    doc_id = student_collection.insert_one(data)
+    doc_id = student_collection.insert_one(student.to_dict())
 
     student.student_id = str(doc_id.inserted_id)
     return student.student_id
