@@ -11,9 +11,9 @@ mongo_client = pymongo.MongoClient(host='localhost', port=27017)
 db = mongo_client['student']
 student_collection = db['student_collection']
 
-db_dir_path = tempfile.gettempdir()
-db_file_path = os.path.join(db_dir_path, "students.json")
-student_db = TinyDB(db_file_path)
+# db_dir_path = tempfile.gettempdir()
+# db_file_path = os.path.join(db_dir_path, "students.json")
+# student_db = TinyDB(db_file_path)
 
 
 def add(student=None):
@@ -70,7 +70,6 @@ def get_by_id(student_id=None, subject=None):
 
 def delete(student_id=None):
     try:
-        student = student_db.get(doc_id=int(student_id))
         res = student_collection.delete_one({'_id': ObjectId(student_id)})
         if res.deleted_count == 0:
             return 'not found', 404
