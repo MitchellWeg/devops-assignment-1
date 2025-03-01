@@ -62,7 +62,7 @@ def get_by_id(student_id=None, subject=None):
         student['student_id'] = str(student['_id'])
         del student['_id']
 
-        return json.dumps(student)
+        return jsonify(student)
 
     except Exception as e:
         print('Error:', str(e))
